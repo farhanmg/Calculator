@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let equalButton = document.querySelector('.equals');
     let historyDiv = document.querySelector('.display');
 
+    // Add event listeners to buttons
     buttons.forEach(button => {
         button.addEventListener('click', function() {
             if (button.innerText !== '=' && button.innerText !== 'AC' && button.innerText !== 'Del') {
@@ -23,17 +24,18 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     equalButton.addEventListener('click', function() {
-        if (input.value !== '' && !isOperator(input.value.slice(-1))) {
-            result = calculate(input.value);
-            let NewArray = []
-            let history = input.value + " = " + result
-            NewArray.push(history)
-            input.value = result;
-            for(let index in NewArray){
-                historyDiv.innerHTML += `<p>${NewArray[index]}</p>`
-            }
-        }
+        evaluateExpression();
     });
+
+    // Function to evaluate the expression
+    function evaluateExpression() {
+        if (input.value !== '' && !isOperator(input.value.slice(-1))) {
+            let result = calculate(input.value);
+            let history = input.value + " = " + result;
+            input.value = result;
+            historyDiv.innerHTML += `<p>${history}</p>`;
+        }
+    }
 
     function isOperator(char) {
         return ['+', '-', '*', '/'].includes(char);
@@ -47,4 +49,12 @@ document.addEventListener("DOMContentLoaded", function() {
             return 'Error';
         }
     }
+
+    // Add event listener for Enter key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent default action of Enter key
+            evaluateExpression(); // Trigger "=" button functionality
+        }
+    });
 });
