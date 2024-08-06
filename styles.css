@@ -1,0 +1,62 @@
+HTML, body {
+    height: 100%;
+    width: 100%;
+}
+
+.calculator {
+    /* margin: auto; */
+    background-color: black; 
+    display: flex;
+    flex-direction: column;
+    width: 470px;
+    /* align-items: center; */
+}
+
+.btn {
+    width: 100px;
+    height: 100px;
+    padding: 20px;
+    margin: 0 3px;
+    border: 2px solid black;
+    border-radius: 9px;
+    background-color: grey;
+    color: white;
+}
+
+.operator {
+    background-color: orange;
+}
+
+.diff-bg {
+    background-color: rgb(186, 178, 178);
+}
+
+.row {
+    margin: 8px;
+}
+
+.input {
+    width: 430px;
+    height: 30px;
+    font-size: 20px;
+    margin: 0;
+    padding: 10px 0px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    text-align: right;
+}
+
+.overall {
+    display: flex;
+    flex-direction: row;
+}
+
+.display {
+    padding: 20px;
+    width: 500px;
+    background-color: grey;
+    color: white;
+    /* height: 700px; */
+}
